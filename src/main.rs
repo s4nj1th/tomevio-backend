@@ -8,7 +8,9 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(|| async { "Hello, World!" }))
-        .route("/search", get(routes::search::search_books));
+        .route("/search", get(routes::search::search))
+        .route("/book/{id}", get(routes::book::get_books))
+        .route("/author/{id}", get(routes::author::get_author));
     println!("Server running on http://{}:{}", addr, port);
 
     let listener = tokio::net::TcpListener::bind(format!("{}:{}", addr, port))
