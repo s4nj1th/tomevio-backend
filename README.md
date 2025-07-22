@@ -5,7 +5,7 @@
 
 ---
 
-This repo contains the backend for **Tomevio**, a sample book tracker platform. It is built in **Rust** using the **Axum** framework to deliver a REST API that powers both the [website frontend](https://github.com/s4nj1th/tomevio-website) and the [mobile app](https://github.com/s4nj1th/tomevio-mobile-app).
+This repo contains the backend for **Tomevio**, a FOSS book tracker platform. It is built in **Rust** using the **Axum** framework to deliver a REST API that powers both the [website frontend](https://github.com/s4nj1th/tomevio-website) and the [mobile app](https://github.com/s4nj1th/tomevio-mobile-app).
 
 ---
 
