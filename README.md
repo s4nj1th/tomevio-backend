@@ -3,11 +3,11 @@
   <p>A fast, modular backend for a book tracking platform.</p>
 </div>
 
----
+
 
 This repo contains the backend for **Tomevio**, a FOSS book tracker platform. It is built in **Rust** using the **Axum** framework to deliver a REST API that powers both the [website frontend](https://github.com/s4nj1th/tomevio-website) and the [mobile app](https://github.com/s4nj1th/tomevio-mobile-app).
 
----
+
 
 ## Features
 
@@ -17,7 +17,7 @@ This repo contains the backend for **Tomevio**, a FOSS book tracker platform. It
 - **Modular Architecture**: Clean separation of routes and logic.
 - **Powered by Rust**: Leverages `axum`, `tokio`, and `reqwest` for speed and safety.
 
----
+
 
 ## Getting Started
 
@@ -49,83 +49,13 @@ This repo contains the backend for **Tomevio**, a FOSS book tracker platform. It
 
 4. The server will be available at `http://localhost:8080`.
 
----
 
-## API Endpoints
 
-### `GET /`
+## API Documentation
 
-* **Description**: Returns a welcome message.
-* **Response**:
+See [docs/api.md](docs/api.md) for detailed information on all API endpoints.
 
-  ```text
-  Hello, World!
-  ```
 
----
-
-### `GET /search?q=<query>`
-
-* **Description**: Searches for books and authors via OpenLibrary.
-* **Query Parameters**:
-
-  * `q` (string): The search term (e.g. `"harry+potter"`).
-* **Response**:
-
-  ```json
-  {
-    "books": [
-      {
-        "title": "Sample Book",
-        "author_name": ["Author One"],
-        "work_id": "Work ID"
-      }
-    ],
-    "authors": [
-      {
-        "name": "Author One",
-        "work_count": count
-      }
-    ]
-  }
-  ```
-
----
-
-### `GET /book/<book_id>`
-
-* **Description**: Retrieves metadata for a book by its OpenLibrary Work ID.
-* **Path Parameters**:
-
-  * `book_id` (string): e.g. `OL123456W`
-* **Response**:
-
-  ```json
-  {
-    "title": "Book Title",
-    "description": "This is a description of a book...",
-    "author_keys": ["/authors/author_id"]
-  }
-  ```
-
----
-
-### `GET /author/<author_id>`
-
-* **Description**: Retrieves metadata and bio for an author by their OpenLibrary Author ID.
-* **Path Parameters**:
-
-  * `author_id` (string): e.g. `OL98765A`
-* **Response**:
-
-  ```json
-  {
-    "name": "Author One",
-    "bio": "Author One is a fictional writer used for documentation examples..."
-  }
-  ```
-
----
 
 ## Contributing
 
@@ -136,13 +66,13 @@ Please:
 * Follow idiomatic Rust conventions
 * Document any new routes or features
 
----
+
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
+
 
 ## Maintainers
 
