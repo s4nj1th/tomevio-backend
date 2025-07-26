@@ -4,13 +4,11 @@ This document outlines the REST API endpoints provided by this service.
 
 ---
 
-## Base URL
+## [Base URL](http://localhost:8080/)
 
 ```
-
-[http://localhost:8080](http://localhost:8080)
-
-````
+http://localhost:8080/
+```
 
 ---
 
@@ -25,7 +23,7 @@ This document outlines the REST API endpoints provided by this service.
 
 ```text
 Hello, World!
-````
+```
 
 ---
 
