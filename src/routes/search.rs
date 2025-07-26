@@ -5,8 +5,10 @@ use serde::{Deserialize, Serialize};
 pub struct Book {
     pub title: String,
     pub author_name: Option<Vec<String>>,
+    pub author_id: Option<Vec<String>>,
     pub work_id: Option<String>,
-    // pub cover_id: Option<u32>,
+    pub cover_id: Option<u32>,
+    pub first_publish_year: Option<u32>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -47,10 +49,20 @@ pub async fn search(Query(params): Query<SearchQuery>) -> Json<SearchResult> {
                         .filter_map(|a| a.as_str().map(|s| s.to_string()))
                         .collect()
                 }),
+                author_id: doc["author_key"]
+                    .as_array()
+                    .map(|keys| {
+                        keys.iter()
+                            .filter_map(|k| k.as_str().map(|s| s.to_string()))
+                            .collect()
+                    }),
                 work_id: doc["key"]
                     .as_str()
                     .and_then(|key| key.strip_prefix("/works/").map(|s| s.to_string())),
-                // cover_id: doc["cover_i"].as_u64().map(|id| id as u32),
+                cover_id: doc["cover_i"].as_u64().map(|id| id as u32),
+                first_publish_year: doc["first_publish_year"]
+                    .as_u64()
+                    .map(|year| year as u32),
             })
         })
         .collect();
