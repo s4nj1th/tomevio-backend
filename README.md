@@ -1,5 +1,12 @@
 <div align="center">
   <h1>Tomevio Backend</h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/tomevioDark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/tomevioLight.svg">
+    <img alt="Tomevio Backend: A fast, modular backend for a book tracking platform."
+         src="assets/tomevioLight.svg"
+         width="50%">
+  </picture>
   <p>A fast, modular backend for a book tracking platform.</p>
 </div>
 
