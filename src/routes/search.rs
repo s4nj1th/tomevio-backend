@@ -16,6 +16,7 @@ pub struct Author {
     pub name: String,
     pub work_count: Option<u32>,
     pub author_id: Option<String>,
+    pub alt_names: Option<Vec<String>>,
 }
 
 #[derive(Serialize)]
@@ -80,6 +81,14 @@ pub async fn search(Query(params): Query<SearchQuery>) -> Json<SearchResult> {
                 name: doc["name"].as_str()?.to_string(),
                 work_count: doc["work_count"].as_u64().map(|wc| wc as u32),
                 author_id: doc["key"].as_str().map(|s| s.to_string()),
+                alt_names: doc["alternate_names"]
+                    .as_array()
+                    .map(|names| {
+                        names
+                            .iter()
+                            .filter_map(|n| n.as_str().map(|s| s.to_string()))
+                            .collect()
+                    }),
             })
         })
         .collect();
