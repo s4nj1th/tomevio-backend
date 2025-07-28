@@ -10,7 +10,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(|| async { "Hello, World!" }))
         .route("/search", get(routes::search::search))
-        .route("/book/{id}", get(routes::book::get_books))
+        .route("/book/{id}", get(routes::book::get_book))
         .route("/author/{id}", get(routes::author::get_author));
 
     println!("Server running on http://{}", addr);
