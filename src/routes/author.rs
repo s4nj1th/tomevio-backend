@@ -7,6 +7,7 @@ pub struct Author {
     pub bio: Option<String>,
     pub alternate_names: Option<Vec<String>>,
     pub works: Vec<Book>,
+    pub lifespan: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -22,6 +23,12 @@ struct AuthorResponse {
     #[serde(default)]
     bio: Option<BioField>,
     alternate_names: Option<serde_json::Value>,
+    #[serde(default)]
+    birth_date: Option<String>,
+    #[serde(default)]
+    death_date: Option<String>,
+    #[serde(default)]
+    date: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -67,7 +74,7 @@ pub async fn get_author(Path(author_id): Path<String>) -> Json<Author> {
                 .collect::<Vec<String>>()
         })
     });
-    
+
     let works_url = format!("https://openlibrary.org/authors/{}/works.json", author_id);
     let works_response = reqwest::get(&works_url)
         .await
@@ -87,11 +94,34 @@ pub async fn get_author(Path(author_id): Path<String>) -> Json<Author> {
         })
         .collect();
 
+    fn extract_year(s: &str) -> Option<String> {
+        let re = regex::Regex::new(r"\b(\d{4})\b").ok()?;
+        re.captures(s)
+            .and_then(|cap| cap.get(1).map(|m| m.as_str().to_string()))
+    }
+
+    let lifespan = if data.date.is_some() {
+        data.date.clone()
+    } else if data.birth_date.is_some() || data.death_date.is_some() {
+        let birth_year = data.birth_date.as_ref().and_then(|d| extract_year(d));
+        let death_year = data.death_date.as_ref().and_then(|d| extract_year(d));
+
+        match (birth_year, death_year) {
+            (Some(b), Some(d)) => Some(format!("{b}-{d}")),
+            (Some(b), None) => Some(format!("{b}-?")),
+            (None, Some(d)) => Some(format!("?-{d}")),
+            _ => None,
+        }
+    } else {
+        None
+    };
+
     let author = Author {
         name: data.name,
         bio,
         alternate_names,
         works,
+        lifespan,
     };
 
     Json(author)
