@@ -31,7 +31,7 @@
 ### Installation & Setup
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/booktrack-backend.git
+git clone https://github.com/s4nj1th/tomevio-backend.git
 cd booktrack-backend
 
 # Build the project
