@@ -3,87 +3,59 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/tomevioDark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/tomevioLight.svg">
-    <img alt="Tomevio Backend: A fast, modular backend for a book tracking platform."
+    <img alt="Tomevio Backend: The Rust-powered engine for your literary journey"
          src="assets/tomevioLight.svg"
          width="50%">
   </picture>
-  <p>A fast, modular backend for a book tracking platform.</p>
+  <p>High-performance backend for tracking, discovering, and organizing books</p>
 </div>
 
+## About
 
+**Tomevio Backend** is the robust foundation powering the Tomevio ecosystem - a free and open-source platform for book enthusiasts. Crafted in **Rust** with the **Axum** framework, it delivers a lightning-fast REST API that seamlessly supports both the [web interface](https://github.com/s4nj1th/tomevio-website) and [mobile experience](https://github.com/s4nj1th/tomevio-mobile-app).
 
-This repo contains the backend for **Tomevio**, a FOSS book tracker platform. It is built in **Rust** using the **Axum** framework to deliver a REST API that powers both the [website frontend](https://github.com/s4nj1th/tomevio-website) and the [mobile app](https://github.com/s4nj1th/tomevio-mobile-app).
+## Key Features
 
+- **Comprehensive Book Search** - Instant access to millions of titles through OpenLibrary API integration
+- **Detailed Metadata** - Retrieve complete book information including covers, descriptions, and publication details
+- **Author Profiles** - Access biographies, bibliographies, and related works
+- **Blazing Fast Performance** - Built with `axum`, `tokio`, and `reqwest` for optimal efficiency
+- **Modular Design** - Clean, maintainable architecture with clear separation of concerns
 
-
-## Features
-
-- **Book Search**: Search for books and authors using the OpenLibrary API.
-- **Book Details**: Fetch metadata like title, description, and authors.
-- **Author Info**: Get author names and bios using OpenLibrary.
-- **Modular Architecture**: Clean separation of routes and logic.
-- **Powered by Rust**: Leverages `axum`, `tokio`, and `reqwest` for speed and safety.
-
-
-
-## Getting Started
+## Quick Start
 
 ### Prerequisites
+- [Rust](https://www.rust-lang.org/tools/install) (latest stable version)
+- [Cargo](https://doc.rust-lang.org/cargo/) (included with Rust)
 
-- [Rust](https://www.rust-lang.org/tools/install)
-- [Cargo](https://doc.rust-lang.org/cargo/)
+### Installation & Setup
+```bash
+# Clone the repository
+git clone https://github.com/your-org/booktrack-backend.git
+cd booktrack-backend
 
-### Installation
+# Build the project
+cargo build
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-org/booktrack-backend.git
-   cd booktrack-backend
-   ```
-
-2. Build the project:
-
-   ```bash
-   cargo build
-   ```
-
-3. Run the server:
-
-   ```bash
-   cargo run
-   ```
-
-4. The server will be available at `http://localhost:8080`.
-
-
+# Launch the server
+cargo run
+```
+The API will be available at `http://localhost:8080`
 
 ## API Documentation
+Explore our comprehensive API reference in [docs/api.md](docs/api.md) to integrate with Tomevio's powerful features.
 
-See [docs/api.md](docs/api.md) for detailed information on all API endpoints.
+## How to Contribute
+We welcome contributions from the open-source community! To help improve Tomevio:
 
-
-
-## Contributing
-
-Pull requests and issues are welcome!
-Please:
-
-* Run `cargo fmt` before submitting
-* Follow idiomatic Rust conventions
-* Document any new routes or features
-
-
+1. Ensure your code is formatted with `cargo fmt`
+2. Follow Rust best practices and conventions
+3. Thoroughly document new features and endpoints
+4. Submit well-described pull requests
 
 ## License
+Tomevio Backend is open-source software released under the [MIT License](LICENSE).
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-
-
-## Maintainers
-
+## Maintainer
 ### Sanjith
-* [Github](https://github.com/s4nj1th)
-* [Twitter (X)](https://x.com/s4nj1th)
-* [Email](mailto:sanjith.develops@gmail.com)
+- [GitHub](https://github.com/s4nj1th) | [Twitter](https://x.com/s4nj1th) | [Email](mailto:sanjith.develops@gmail.com)
