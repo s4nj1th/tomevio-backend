@@ -1,11 +1,17 @@
-use axum::{routing::get, Router};
+use axum::{routing::{get, post}, Router};
+use sea_orm::Database;
 use std::net::SocketAddr;
 
 mod routes;
+mod utils;
 
 #[tokio::main]
 async fn main() {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+    let conn_str = (*utils::constants::DATABASE_URL).clone();
+    let db = Database::connect(conn_str)
+        .await
+        .expect("Failed to connect to the database");
 
     let app = Router::new()
         .route("/", get(|| async { "Hello, World!" }))
