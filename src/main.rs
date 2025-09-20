@@ -7,12 +7,14 @@ use crate::controller::{get_info_handler, login_handler};
 mod routes;
 mod controller;
 mod model;
+mod db;
 
 #[tokio::main]
 async fn main() {
     dotenv().ok();
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+    let addr_str = std::env::var("SERVER_ADDR").unwrap_or_else(|_| "127.0.0.1:8080".to_string());
+    let addr: SocketAddr = addr_str.parse().expect("Invalid SERVER_ADDR format");
     // let conn_str = std::env::var("DATABASE_URL").expect("DATABASE_URL is not set");
     // let db = Database::connect(conn_str)
     //     .await
